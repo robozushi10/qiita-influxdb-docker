@@ -29,12 +29,10 @@ services:
       - ./PV/fluentd/log:/fluentd/log
       - ./PV/fluentd/etc:/fluentd/etc
   influxdb:
-    image: influxdb
+    image: influxdb:2.0.8-alpine
     container_name: myinflxdb_influxdb
     ports:
       - '8086:8086'
-    networks:
-      - grafana_network
     environment:
       - INFLUXDB_DB=grafana
       - INFLUXDB_USER=grafana
