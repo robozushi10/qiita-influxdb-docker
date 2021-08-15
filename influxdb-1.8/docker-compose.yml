@@ -42,4 +42,13 @@ services:
       - INFLUXDB_ADMIN_PASSWORD=admin
     volumes:
       - './PV/influxdb/data:/var/lib/influxdb'
-
+      - './PV/influxdb/conf:/etc/influxdb/'
+  chronograf:
+    container_name: chronograf
+    image: chronograf
+    ports:
+      - "8888:8888"
+    links:
+      - influxdb
+    volumes:
+      - './PV/chronograf/data:/var/lib/chronograf'
